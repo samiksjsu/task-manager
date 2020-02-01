@@ -123,7 +123,7 @@ router.delete('/users/me', auth, async (req, res) => {
 
         // the same result as above
         await req.user.remove()
-        sendGoodByeEmail(req.user.email, req.user.name)
+        // sendGoodByeEmail(req.user.email, req.user.name)
         res.status(200).send(req.user)
     } catch (e) {
         res.status(500).send()
@@ -183,8 +183,6 @@ router.delete('/users/me', auth, async (req, res) => {
 })*/
 
 router.patch('/users/me', auth, async (req, res) => {
-
-    console.log('Inside Update')
     const updates = Object.keys(req.body)
     const allowedUpdates = ['name', 'email', 'password', 'age']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))

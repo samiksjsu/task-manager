@@ -1,10 +1,14 @@
-const express = require('express')
-const {ObjectId} = require('mongodb')
-require('./db/mongoose')
-const app = express()
+const app = require('./app')
 const port = process.env.PORT
-const userRouter = require('./routers/user')
-const taskRouter = require('./routers/task')
+
+app.listen(port, () => {
+    console.log('Server is running at port ', port)
+})
+
+
+
+
+
 
 // app.use((req, res, next) => {
     
@@ -25,11 +29,3 @@ const taskRouter = require('./routers/task')
 // })
 
 // -------------------------------------------------
-
-app.use(express.json())
-app.use(userRouter)
-app.use(taskRouter)
-
-app.listen(port, () => {
-    console.log('Server is running at port ', port)
-})
